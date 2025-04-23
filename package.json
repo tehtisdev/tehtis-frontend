@@ -2,7 +2,6 @@
   "name": "tehtis",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://users.metropolia.fi/~onnif/tehtis/",
   "scripts": {
     "dev": "vite",
     "server": "ts-node server.ts",
