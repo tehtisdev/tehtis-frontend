@@ -1,0 +1,35 @@
+.add-course-form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-self: flex-start;
+  padding: 2em;
+  gap: 2em;
+  width: 25em;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.add-course-form h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.add-course-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.buttons {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: auto;
+}

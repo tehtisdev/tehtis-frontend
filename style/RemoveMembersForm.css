@@ -1,0 +1,35 @@
+.button {
+  font-size: 1em;
+  background: var(--lightgreen);
+  border: 2px solid transparent; /* Ensure no size change */
+  padding: 1em;
+  cursor: pointer;
+  border-radius: 15px;
+  color: var(--black);
+  box-sizing: border-box; /* Prevent size changes */
+  transition: 0.3s;
+}
+
+.button:hover {
+  transition: 0.3s;
+  border: 2px solid black; /* Same thickness to avoid movement */
+  box-shadow: black 3px 3px;
+}
+
+.disabled-button {
+  background: var(--aliceblue);
+  color: grey !important;
+  border: 2px solid transparent; /* Ensure no size change */
+  padding: 1em;
+  cursor: not-allowed;
+  border-radius: 15px;
+  color: var(--black);
+  box-sizing: border-box; /* Prevent size changes */
+  transition: 0.3s;
+}
+
+.disabled-button:hover {
+  transition: 0.3s;
+  border: 2px solid transparent; /* Same thickness to avoid movement */
+  box-shadow: none;
+}

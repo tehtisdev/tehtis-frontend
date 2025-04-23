@@ -1,0 +1,36 @@
+.edit-submission-form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-self: flex-start;
+  padding: 2em;
+  height: 32em;
+  width: 35em;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.edit-submission-files {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-top: 0;
+}
+
+.current-submission-file svg {
+  width: 45px;
+  height: 45px;
+}
+
+.current-submission-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

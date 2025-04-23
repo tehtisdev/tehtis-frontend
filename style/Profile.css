@@ -1,0 +1,46 @@
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 4em;
+  color: var(--black);
+}
+
+@media screen and (max-width: 768px) {
+  .profile-content {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1em;
+  margin-top: 2em;
+  padding: 2em;
+  background-color: var(--white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-info label {
+  font-style: italic;
+}
+
+.usename {
+  font-size: 1.5em;
+}
+
+.profile-info p {
+  font-size: 1.1em;
+}

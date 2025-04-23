@@ -1,0 +1,53 @@
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: var(--black);
+  background-color: var(--white);
+  border-radius: 15px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.toolbar {
+  display: flex;
+  gap: 1em;
+  padding-bottom: 1em;
+}
+
+.toolbar button {
+  display: flex;
+  background-color: var(--aliceblue);
+  width: 15px;
+  height: 15px;
+  font-size: 0.8em;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+.toolbar button.active {
+  background-color: var(--bleudefrance);
+  color: var(--white);
+}
+
+.editor-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  max-height: 20em;
+  overflow-y: auto;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  border: transparent;
+}
+
+p.is-editor-empty:first-child::before {
+  color: gray;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

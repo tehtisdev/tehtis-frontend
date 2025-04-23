@@ -1,0 +1,22 @@
+body {
+  background-color: var(--lightgreen);
+  margin: 0;
+  display: block;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+.adminpanel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 4em;
+  color: var(--black);
+}
