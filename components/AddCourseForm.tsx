@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/root.css";
-import "../style/courseform.css";
+import "../style/CourseForm.css";
 import { toast, ToastContainer } from "react-toastify";
 
 interface AddCourseFormProps {
