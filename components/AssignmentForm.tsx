@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style/root.css";
-import "../style/assignmentform.css";
+import "../style/AssignmentForm.css";
 import { toast, ToastContainer } from "react-toastify";
 import { TextEditorComponent } from "./TextEditorComponent";
 interface AssignmentFormProps {

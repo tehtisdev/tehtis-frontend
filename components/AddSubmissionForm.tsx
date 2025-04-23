@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormTextEditorComponent } from "./FormTextEditorComponent";
 import "../style/root.css";
-import "../style/assignmentform.css";
+import "../style/AssignmentForm.css";
 import { useAuth } from "../context/AuthContext";
 import { defaultStyles, FileIcon } from "react-file-icon";
 import { MdDeleteForever } from "react-icons/md";

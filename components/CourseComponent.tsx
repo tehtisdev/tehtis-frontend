@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style/root.css";
-import "../style/course.css";
+import "../style/Course.css";
 import { motion } from "framer-motion";
 import { FaPlus } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";

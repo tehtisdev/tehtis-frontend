@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../style/root.css";
-import "../style/assignmentform.css";
+import "../style/AssignmentForm.css";
 import { FaPlus, FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { FaQuestionCircle } from "react-icons/fa";
