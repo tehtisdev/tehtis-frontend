@@ -25,7 +25,9 @@ export const Login = () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_URL}/session`, {
           method: "GET",
-          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+          },
         });
         const data = await response.json();
         console.log("Session:", data);
@@ -96,6 +98,7 @@ export const Login = () => {
 
         const data = await response.json();
         if (response.ok) {
+          localStorage.setItem("token", data.token); // tallennetaan token localStorageen
           login({
             id: data.userId,
             email,
