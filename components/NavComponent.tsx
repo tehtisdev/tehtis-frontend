@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const NavComponent = () => {
   const { logout } = useAuth();
@@ -34,14 +34,14 @@ export const NavComponent = () => {
           <h2>Tehtis</h2>
         </li>
         <li>
-          <a href="/dashboard" style={getLinkStyle("/dashboard")}>
+          <Link to="/dashboard" style={getLinkStyle("/dashboard")}>
             Etusivu
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/profile" style={getLinkStyle("/profile")}>
+          <Link to="/profile" style={getLinkStyle("/profile")}>
             Profiili
-          </a>
+          </Link>
         </li>
         <li>
           <a onClick={handleLogout}>Kirjaudu ulos</a>

@@ -10,7 +10,7 @@ import { AdminPanel } from "../views/AdminPanel";
 export const App = () => {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Test />} />
           <Route path="/login" element={<Login />} />
