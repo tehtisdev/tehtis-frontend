@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import { jwtDecode } from "jwt-decode";
 
 interface AuthContextType {
   loggedIn: boolean;
