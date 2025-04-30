@@ -48,6 +48,9 @@ export const AddSubmissionForm = ({
           {
             method: "POST",
             body: fileData,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+            },
           }
         );
 

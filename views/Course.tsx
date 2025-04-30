@@ -88,7 +88,9 @@ export const Course = () => {
         {
           method: "POST",
           body: formData,
-          credentials: "include", // Ensures session cookies are sent
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+          },
         }
       );
 
@@ -184,7 +186,9 @@ export const Course = () => {
         {
           method: "POST",
           body: formData,
-          credentials: "include", // Ensures session cookies are sent
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+          },
         }
       );
 

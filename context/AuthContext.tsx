@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
+import { jwtDecode } from "jwt-decode";
 
 interface AuthContextType {
   loggedIn: boolean;
@@ -31,16 +32,23 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     lastname: string;
   } | null>(null);
 
-  // tarkistetaan sessio, kun komponentti latautuu
+  // 🔁 Check token on load
   useEffect(() => {
-    const checkSession = async () => {
+    const checkToken = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
       try {
-        const response = await fetch(`${import.meta.env.VITE_URL}/session`, {
+        const response = await fetch(`${import.meta.env.VITE_URL}/me`, {
           method: "GET",
-          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
+
         const data = await response.json();
-        if (data.loggedIn) {
+
+        if (response.ok) {
           setLoggedIn(true);
           setUser({
             id: data.userId,
@@ -49,13 +57,16 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             firstname: data.firstname,
             lastname: data.lastname,
           });
+        } else {
+          localStorage.removeItem("token");
         }
       } catch (error) {
-        console.error("Error checking session:", error);
+        console.error("Error validating token:", error);
+        localStorage.removeItem("token");
       }
     };
 
-    checkSession();
+    checkToken();
   }, []);
 
   const login = (user: {
@@ -69,11 +80,8 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(user);
   };
 
-  const logout = async () => {
-    await fetch(`${import.meta.env.VITE_URL}/logout`, {
-      method: "POST",
-      credentials: "include",
-    });
+  const logout = () => {
+    localStorage.removeItem("token");
     setLoggedIn(false);
     setUser(null);
   };

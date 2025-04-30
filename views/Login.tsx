@@ -6,6 +6,7 @@ import { RegisterComponent } from "../components/RegisterComponent";
 import { LoginComponent } from "../components/LoginComponent";
 import { useAuth } from "../context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
 
 export const Login = () => {
   const [firstname, setFirstname] = useState("");
@@ -59,7 +60,7 @@ export const Login = () => {
           credentials: "include",
         });
         const data = await response.json();
-        console.log("Fetched users:", data);
+        /*console.log("Fetched users:", data);*/
         setUsers(data);
         console.log(users);
       } catch (error) {
@@ -85,26 +86,36 @@ export const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     startTransition(async () => {
-      console.log("vite_url:", import.meta.env.VITE_URL);
       try {
         const response = await fetch(`${import.meta.env.VITE_URL}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
           body: JSON.stringify({ email: email.toLowerCase(), password }),
         });
 
         const data = await response.json();
-        if (response.ok) {
-          localStorage.setItem("token", data.token); // tallennetaan token localStorageen
+
+        if (response.ok && data.token) {
+          localStorage.setItem("token", data.token);
+
+          // Decode token to get user data
+          const decoded = jwtDecode<{
+            userId: number;
+            email: string;
+            role: string;
+            firstname: string;
+            lastname: string;
+            exp: number;
+          }>(data.token);
+
           login({
-            id: data.userId,
-            email,
-            role: data.role,
-            firstname: data.firstname,
-            lastname: data.lastname,
+            id: decoded.userId,
+            email: decoded.email,
+            role: decoded.role,
+            firstname: decoded.firstname,
+            lastname: decoded.lastname,
           });
 
           setLoggedIn(true);

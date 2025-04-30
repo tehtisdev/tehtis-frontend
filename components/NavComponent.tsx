@@ -16,6 +16,9 @@ export const NavComponent = () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_URL}/logout`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+        },
       });
 
       if (response.ok) {

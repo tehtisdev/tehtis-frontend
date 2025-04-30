@@ -276,6 +276,9 @@ app.get("/submissions/:assignmentId", (req, res) => {
         {
           method: "POST",
           body: fileData,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+          },
         }
       );
 
