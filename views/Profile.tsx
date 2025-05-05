@@ -6,10 +6,7 @@ import { NavComponent } from "../components/NavComponent";
 import { useAuth } from "../context/AuthContext";
 
 export const Profile = () => {
-  const { loggedIn, user } = useAuth();
-  console.log("profile.user:", user);
-
-  console.log("loggedIn:", loggedIn);
+  const { user } = useAuth();
 
   return (
     <>

@@ -33,9 +33,6 @@ export const AddCourseForm: React.FC<AddCourseFormProps> = ({
       const result = await response.json();
 
       if (result.success) {
-        console.log("Kurssi luotu:", result);
-        console.log("kurssin data: ", result.data);
-
         const notify = () =>
           toast.success("Kurssi luotu onnistuneesti!", {
             position: "bottom-center",

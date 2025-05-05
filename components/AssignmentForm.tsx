@@ -55,7 +55,6 @@ export const AssignmentForm: React.FC<AssignmentFormProps> = ({
         notify();
 
         setTimeout(() => {
-          console.log("Assignment added:", result);
           setTitle("");
           setDescription("");
           toggleAssignmentBox(); // suljetaan tehtävänlisäyslomake

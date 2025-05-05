@@ -196,8 +196,6 @@ export const Course = () => {
         throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
-      console.log("File uploaded successfully", data);
       getAssignmentFiles(assignmentId);
     } catch (error) {
       console.error("Error uploading file", error);

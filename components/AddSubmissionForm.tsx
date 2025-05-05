@@ -22,10 +22,6 @@ export const AddSubmissionForm = ({
 
   const [files, setFiles] = useState<File[]>([]);
 
-  console.log("assignmentId", assignmentId);
-  console.log("description", description);
-  console.log("studentId", user?.id);
-
   const addNewFile = (event: React.FormEvent) => {
     event.preventDefault();
     const fileInput = document.querySelector('input[type="file"]');
@@ -59,8 +55,6 @@ export const AddSubmissionForm = ({
         if (result.error) {
           throw new Error(result.error);
         }
-
-        console.log(`File ${file.name} uploaded successfully`);
       } catch (error) {
         console.error(`Error uploading file ${file.name}:`, error);
         alert(`Tiedoston ${file.name} lataus epäonnistui!`);
@@ -98,7 +92,6 @@ export const AddSubmissionForm = ({
       // ladataan tiedostot palvelimelle
       await uploadFiles(submissionId);
 
-      console.log("assignmentId", assignmentId);
       updateSubmissions();
       toggleSubmissionBox();
     } catch (error) {

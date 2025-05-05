@@ -1,13 +1,14 @@
 import { useAuth } from "../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const NavComponent = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
   const greenColor = "#30c67c";
 
+  const location = useLocation();
   const getLinkStyle = (path: string) => {
-    return window.location.pathname === path
+    return location.pathname.endsWith(path)
       ? { color: greenColor, fontWeight: "bold" }
       : {};
   };

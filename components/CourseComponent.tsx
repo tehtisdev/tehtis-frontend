@@ -86,7 +86,7 @@ export const CourseComponent = ({
       const response = await fetch(
         `${import.meta.env.VITE_URL}/update-course/${course.id}`,
         {
-          method: "POST", // Change this to POST
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -96,7 +96,7 @@ export const CourseComponent = ({
           }), // Include 'name' if required
         }
       );
-      console.log("response", response);
+      console.log(response.status);
     } catch (error) {
       console.error("Error updating course description", error);
     }
@@ -175,7 +175,6 @@ app.get("/submissions/:assignmentId", (req, res) => {
       const submissionsData = await Promise.all(
         assignments.map(async (assignment) => {
           const data = await getSubmissionsForAssignment(assignment.id);
-          console.log(`submissions for assignment ${assignment.title}`, data);
           return { id: assignment.id, submissions: data };
         })
       );
@@ -189,7 +188,6 @@ app.get("/submissions/:assignmentId", (req, res) => {
     const submissionsData = await Promise.all(
       assignments.map(async (assignment) => {
         const data = await getSubmissionsForAssignment(assignment.id);
-        console.log(`submissions for assignment ${assignment.title}`, data);
         return { id: assignment.id, submissions: data };
       })
     );
@@ -206,7 +204,6 @@ app.get("/submissions/:assignmentId", (req, res) => {
       }
 
       const data = await response.json();
-      console.log("Files for submission", submissionId, data);
       return data;
     } catch (error) {
       console.error("Error getting submission files", error);
@@ -240,8 +237,6 @@ app.get("/submissions/:assignmentId", (req, res) => {
         }, {});
 
         setSubmissionFiles(filesObject);
-
-        console.log("Submission files object", filesObject);
       } catch (error) {
         console.error("Error fetching submission files", error);
       }
@@ -287,8 +282,6 @@ app.get("/submissions/:assignmentId", (req, res) => {
       if (result.error) {
         throw new Error(result.error);
       }
-
-      console.log(`File ${file.name} uploaded successfully`);
 
       const files = await getSubmissionFiles(submissionId);
       setSubmissionFiles((prev) => ({

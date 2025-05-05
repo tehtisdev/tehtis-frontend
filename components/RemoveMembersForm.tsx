@@ -30,7 +30,6 @@ export const RemoveMembersForm: React.FC<RemoveMembersFormProps> = ({
       const data = await response.json();
 
       setMembers(data);
-      console.log("members: ", members);
     } catch (error) {
       console.error("Error fetching course members", error);
     }
@@ -65,9 +64,7 @@ export const RemoveMembersForm: React.FC<RemoveMembersFormProps> = ({
     }
   };
 
-  useEffect(() => {
-    console.log("Updated submissionsToRemove: ", submissionsToRemove);
-  }, [submissionsToRemove]);
+  useEffect(() => {}, [submissionsToRemove]);
 
   const handleRemoveMember = (member: any) => {
     // lisätään poistettava jäsen membersToRemove-taulukkoon
@@ -94,7 +91,6 @@ export const RemoveMembersForm: React.FC<RemoveMembersFormProps> = ({
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       } else {
-        console.log(`submission ${submissionId} deleted successfully`);
       }
     } catch (error) {
       console.error("Error deleting submission", error);

@@ -17,9 +17,6 @@ export const Login = () => {
   const [register, setRegister] = useState(false);
   const navigate = useNavigate();
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [users, setUsers] = useState<any[]>([]);
-
   // tarkistetaan sessio, kun komponentti latautuu
   useEffect(() => {
     const checkSession = async () => {
@@ -31,10 +28,7 @@ export const Login = () => {
           },
         });
         const data = await response.json();
-        console.log("Session:", data);
         if (data.loggedIn) {
-          setLoggedIn(true);
-          console.log(loggedIn);
           login({
             id: data.userId,
             email: data.email,
@@ -52,7 +46,8 @@ export const Login = () => {
   }, [navigate, login]);
 
   // haetaan kaikki käyttäjät debuggaamista varten
-  useEffect(() => {
+  /*
+    useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_URL}/users`, {
@@ -60,7 +55,6 @@ export const Login = () => {
           credentials: "include",
         });
         const data = await response.json();
-        /*console.log("Fetched users:", data);*/
         setUsers(data);
         console.log(users);
       } catch (error) {
@@ -69,6 +63,7 @@ export const Login = () => {
     };
     fetchUsers();
   }, []);
+  */
 
   const notify = () =>
     toast.success("Rekisteröityminen onnistui! Kirjaudutaan sisään...", {
@@ -118,7 +113,6 @@ export const Login = () => {
             lastname: decoded.lastname,
           });
 
-          setLoggedIn(true);
           navigate("/dashboard");
         } else {
           alert(data.error || "Invalid credentials");
@@ -193,21 +187,16 @@ export const Login = () => {
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
   const togglePrivacyPolicy = () => {
-    setShowPrivacyPolicy((prev) => {
-      const newState = !prev;
-      console.log(showPrivacyPolicy);
-      const privacyPolicyContent = document.querySelector(
-        ".privacy-policy-content"
-      ) as HTMLSpanElement;
+    setShowPrivacyPolicy(!showPrivacyPolicy);
+    const privacyPolicyContent = document.querySelector(
+      ".privacy-policy-content"
+    ) as HTMLSpanElement;
 
-      if (newState) {
-        privacyPolicyContent.classList.remove("hidden");
-      } else {
-        privacyPolicyContent.classList.add("hidden");
-      }
-
-      return newState;
-    });
+    if (showPrivacyPolicy) {
+      privacyPolicyContent.classList.remove("hidden");
+    } else {
+      privacyPolicyContent.classList.add("hidden");
+    }
   };
 
   return (

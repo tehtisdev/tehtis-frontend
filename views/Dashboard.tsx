@@ -12,12 +12,6 @@ export const Dashboard = () => {
   const { loggedIn, user } = useAuth();
   const navigate = useNavigate();
 
-  console.log("User:", user);
-  console.log("firstname: ", user?.firstname);
-  console.log("lastname: ", user?.lastname);
-  console.log("role:", user?.role);
-  console.log("Logged in:", loggedIn);
-
   const [courses, setCourses] = React.useState<any[]>([]);
 
   const getMyCourses = async () => {
@@ -27,8 +21,8 @@ export const Dashboard = () => {
           Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
         },
       });
+
       const data = await response.json();
-      console.log("My courses:", data);
       setCourses(data);
     } catch (error) {
       console.error("Error fetching my courses", error);
