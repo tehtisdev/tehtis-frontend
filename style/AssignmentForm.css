@@ -23,7 +23,7 @@ h3 {
   transform: translate(-50%, -50%);
   align-self: flex-start;
   padding: 2em;
-  gap: 2em;
+  gap: 1em;
   width: 25em;
   background: var(--white);
   border-radius: 10px;
