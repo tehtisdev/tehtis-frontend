@@ -100,7 +100,7 @@ export const AssignmentForm: React.FC<AssignmentFormProps> = ({
           <label>
             <span>Kuvaus:</span>
           </label>
-          <div className="assignment-desc-editor" style={{ height: "20em" }}>
+          <div className="assignment-desc-editor" style={{ height: "15em" }}>
             <TextEditorComponent
               content={description}
               setContent={setDescription}
